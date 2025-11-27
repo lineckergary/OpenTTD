@@ -23,7 +23,7 @@
 /**
  * Callback for building wagons.
  * @param result The result of the command.
- * @param new_veh_id ID of the ne vehicle.
+ * @param new_veh_id ID of the new vehicle.
  * @param tile   The tile the command was executed on.
  */
 void CcBuildWagon(Commands, const CommandCost &result, VehicleID new_veh_id, uint, uint16_t, CargoArray, TileIndex tile, EngineID, bool, CargoType, ClientID)
@@ -38,7 +38,7 @@ void CcBuildWagon(Commands, const CommandCost &result, VehicleID new_veh_id, uin
 		if (v->type != VEH_TRAIN) continue;
 
 		const Train *t = Train::From(v);
-		if (t->IsFrontEngine() && t->IsStoppedInDepot()) {
+		if (t->IsFrontEngine() && t->IsStoppedInDepot() && !t->IsMaxLength()) {
 			if (found != nullptr) return; // must be exactly one.
 			found = t;
 		}

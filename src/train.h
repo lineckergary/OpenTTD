@@ -189,6 +189,12 @@ struct Train final : public GroundVehicle<Train, VEH_TRAIN> {
 		return GetRailTypeInfo(GetRailType(this->tile))->acceleration_type;
 	}
 
+    /**
+     * Checks if Train Length is equal to maximum length in settings
+     * @return Returns true if maximum train length is reached
+     */
+        bool IsMaxLength() const;
+
 protected: // These functions should not be called outside acceleration code.
 
 	/**

@@ -4235,3 +4235,11 @@ uint16_t Train::GetMaxWeight() const
 
 	return weight;
 }
+
+bool Train::IsMaxLength() const
+{
+    const uint TrainSize = CountVehiclesInChain(this);
+    const uint AllowedLength = _settings_game.vehicle.max_train_length;
+
+    return TrainSize == AllowedLength * 2;
+}
